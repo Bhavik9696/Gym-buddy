@@ -1,3 +1,4 @@
+const { set } = require('mongoose');
 const workout=require('../models/workoutModel')
 
 const createWorkout=async(req,res)=>{
@@ -14,14 +15,6 @@ const createWorkout=async(req,res)=>{
 
 
 const getworkouts=async(req,res)=>{
-  const workouts=await workout.find({}).sort({createdAt:-1});
-  if(!workouts){
-    return res.status(400).json({error:"No entries found"})
-  }
-  res.status(200).json(workouts)
-}
-
-const de=async(req,res)=>{
   const workouts=await workout.find({}).sort({createdAt:-1});
   if(!workouts){
     return res.status(400).json({error:"No entries found"})
@@ -53,4 +46,18 @@ const deletebyid=async(req,res)=>{
 
 }
 
-module.exports={createWorkout,getworkouts,getworkout,deletebyid}
+
+const update = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const updated = await workout.findByIdAndUpdate(id, { ...req.body }, { new: true });
+    if (!updated) {
+      return res.status(404).json({ error: "No entry found to update" });
+    }
+    res.status(200).json(updated);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+};
+
+module.exports={createWorkout,getworkouts,getworkout,deletebyid,update}

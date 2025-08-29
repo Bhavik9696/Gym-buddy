@@ -1,7 +1,7 @@
 const express=require('express');
 // const Workout=require('../models/workoutModel.js')
 const router=express.Router();
-const {createWorkout,getworkouts,getworkout,deletebyid}=require('../controllers/workoutController')
+const {createWorkout,getworkouts,getworkout,deletebyid,update}=require('../controllers/workoutController')
 
 router.get('/',getworkouts);
 
@@ -14,10 +14,6 @@ router.post('/',createWorkout)
 router.delete('/:id',deletebyid)
 
 
-router.patch('/:id',(req,res)=>{
-  res.json({
-    msg:`upadte by patch workouts by id : ${req.params.id}`
-  })
-})
+router.patch('/:id',update)
 
 module.exports=router;
