@@ -1,32 +1,17 @@
 const express=require('express');
-
+// const Workout=require('../models/workoutModel.js')
 const router=express.Router();
+const {createWorkout,getworkouts,getworkout,deletebyid}=require('../controllers/workoutController')
 
-router.get('/',(req,res)=>{
-  res.json({
-    msg:"all work outs"
-  })
-})
+router.get('/',getworkouts);
 
 
-router.get('/:id',(req,res)=>{
-  res.json({
-    msg:`all work outs ${req.params.id}`
-  })
-})
+router.get('/:id',getworkout)
 
-router.post('/',(req,res)=>{
-  res.json({
-    msg:`post workouts`
-  })
-})
+router.post('/',createWorkout)
 
 
-router.delete('/:id',(req,res)=>{
-  res.json({
-    msg:`delete workouts by id : ${req.params.id}`
-  })
-})
+router.delete('/:id',deletebyid)
 
 
 router.patch('/:id',(req,res)=>{
