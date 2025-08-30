@@ -6,14 +6,10 @@ const createWorkout=async(req,res)=>{
 
   try{
     const createworkout = await workout.create({ title, load, reps });
-
     res.status(200).json(createworkout); }catch(error){
   res.status(400).json({error:error.message})
-
   }
 }
-
-
 const getworkouts=async(req,res)=>{
   const workouts=await workout.find({}).sort({createdAt:-1});
   if(!workouts){
@@ -21,9 +17,6 @@ const getworkouts=async(req,res)=>{
   }
   res.status(200).json(workouts)
 }
-
-
-
 
 const getworkout=async(req,res)=>{
   const {id}=req.params;
