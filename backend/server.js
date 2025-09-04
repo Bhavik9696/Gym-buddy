@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const app = express();
 
 // Import routes
-const workoutRoutes = require('./routes/workout.js');
+const workoutRoutes = require('./routes/workout');
 //user routes
 const userRoutes = require('./routes/user');
 
