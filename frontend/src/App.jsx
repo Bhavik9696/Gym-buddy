@@ -1,8 +1,8 @@
 import Home from './pages/Home'
 import Navbar from './components/Navbar'
+import WorkoutForm from './components/WorkoutForm'
 import './App.css'
 import {BrowserRouter,Routes,Route} from 'react-router-dom'
-import WorkoutForm from './components/WorkoutForm'
 
 
 
